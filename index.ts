@@ -1,8 +1,20 @@
 import { Serve } from 'bun'
 
+const complicatedFunc = async () => {
+  const largeBlob = await fetch('https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json');
+  const json = await largeBlob.json();
+
+  for (let i = 0; i < 20; i++) {
+    await Bun.write(`./large-file-${i}.json`, JSON.stringify(json));
+  }
+  
+  return json;
+}
+
 export default {
   port: process.env.PORT || 3000,
-  fetch(req) {
+  async fetch(req) {
+    await complicatedFunc();
     return new Response(`
       <html>
         <head>
