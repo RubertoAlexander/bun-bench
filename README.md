@@ -1,4 +1,4 @@
-# bun-bench
+# bun-bench test
 
 To install dependencies:
 
