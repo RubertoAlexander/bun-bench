@@ -1,8 +1,7 @@
 import { Serve } from 'bun'
 
 export default {
-  port: 3000,
-  hostname: 'localhost',
+  port: process.env.PORT || 3000,
   fetch(req) {
     return new Response(`
       <html>
