@@ -14,7 +14,14 @@ const complicatedFunc = async () => {
 export default {
   port: process.env.PORT || 3000,
   async fetch(req) {
-    await complicatedFunc();
+    let error = '';
+
+    try {
+      await complicatedFunc();
+    }
+    catch (e) {
+      error = e.message;
+    }
     return new Response(`
       <html>
         <head>
@@ -25,6 +32,7 @@ export default {
             <h1>Bun Benchmark</h1>
             <p>Current time: ${new Date().toISOString()}</p>
             <p>Request to render time (ms): <span id='render-time' /></p>
+            <p>Fetch error: ${error}</p>
             <script>
               const renderTime = new Date() - performance.timing.requestStart
               document.getElementById('render-time').innerText = renderTime.toString()
