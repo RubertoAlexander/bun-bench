@@ -1,26 +1,10 @@
 import { Serve } from 'bun'
 
-const complicatedFunc = async () => {
-
-  // for (let i = 0; i < 20; i++) {
-    const file = Bun.file('large-file-0.json')
-    console.log('file', file, file.size)
-    const data = await file.json();
-  // }
-}
-
 export default {
   port: process.env.PORT || 3000,
   async fetch(req) {
     let error = '';
 
-    try {
-      await complicatedFunc();
-    }
-    catch (e) {
-      console.log(e)
-      error = e.message;
-    }
     return new Response(`
       <html>
         <head>
