@@ -1,23 +1,11 @@
 import { Serve } from 'bun'
 
 const complicatedFunc = async () => {
-  console.log('Complicated function called')
-  const largeBlob = await fetch('https://raw.githubusercontent.com/json-iterator/test-data/master/large-file.json');
-  const json = await largeBlob.json();
 
-  console.log('Writing files')
-
-  console.log('bun write:', Bun.write)
-
-  // for (let i = 0; i < 3; i++) {
-    const file = Bun.file(`./large-file.json`);
-    console.log('file:', file)
-    await Bun.write(Bun.file(`./large-file.json`), JSON.stringify(json));
-  // }
-
-  console.log('Done writing files')
-  
-  return json;
+  for (let i = 0; i < 20; i++) {
+    const file = Bun.file('large-file-0.json')
+    const data = await file.json();
+  }
 }
 
 export default {
