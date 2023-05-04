@@ -9,11 +9,11 @@ const complicatedFunc = async () => {
 
   console.log('bun write:', Bun.write)
 
-  for (let i = 0; i < 3; i++) {
+  // for (let i = 0; i < 3; i++) {
     const file = Bun.file(`./large-file-${i}.json`);
     console.log('file:', file)
     await Bun.write(Bun.file(`./large-file-${i}.json`), JSON.stringify(json));
-  }
+  // }
 
   console.log('Done writing files')
   
