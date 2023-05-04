@@ -2,11 +2,11 @@ import { Serve } from 'bun'
 
 const complicatedFunc = async () => {
 
-  for (let i = 0; i < 20; i++) {
+  // for (let i = 0; i < 20; i++) {
     const file = Bun.file('large-file-0.json')
-    console.log('file', file.size)
+    console.log('file', file, file.size)
     const data = await file.json();
-  }
+  // }
 }
 
 export default {
