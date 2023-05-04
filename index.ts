@@ -20,6 +20,7 @@ export default {
       await complicatedFunc();
     }
     catch (e) {
+      console.log(e)
       error = e.message;
     }
     return new Response(`
